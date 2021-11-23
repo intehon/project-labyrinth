@@ -9,7 +9,7 @@ export const startPage = createSlice({
       startPageMessage: []
     },
     reducers: {
-      startPageMessage: (state, action) => {
+      setStartPageMessage: (state, action) => {
         state.startPageMessage = [action.payload]
       }
     }
@@ -18,7 +18,7 @@ export const startPage = createSlice({
   export const fetchStartPageMessage = () => {
 
     const options = {
-        method: "POST", 
+        method: "POST",
         headers: {
         "Content-Type": "application/json",
         },

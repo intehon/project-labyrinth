@@ -2,13 +2,13 @@ import React from 'react'
 import { Provider } from "react-redux"
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import { ui } from "./reducers/ui"
-import { maze } from "./reducers/maze"
+import { startPage } from "./reducers/startPage"
 import { LoadingIndicator } from "./components/LoadingIndicator"
-import { Maze } from "./components/Maze"
+import { StartPage } from "./components/StartPage"
 
 const reducer = combineReducers({
   ui: ui.reducer,
-  maze: maze.reducer
+  startPage: startPage.reducer
 });
 
 const store = configureStore({ reducer })
@@ -18,7 +18,7 @@ export const App = () => {
     <Provider store={store}>
       <main className="app">
         <LoadingIndicator />
-        <Maze />
+        <StartPage />
       </main>
     </Provider>
   )

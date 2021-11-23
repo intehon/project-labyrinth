@@ -1,24 +1,22 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMazeMessage } from "../reducers/maze"
+import { fetchStartPageMessage } from "../reducers/startPage"
 
-export const Maze = () => {
-  const maze = useSelector((store) => store.maze.mazeMessage)
+export const StartPage = () => {
+  const startPage = useSelector((store) => store.startPage.startPageMessage)
   const dispatch = useDispatch()
-
-  console.log("maze", maze)
 
   return (
     <>
         <h1>Welcome to the maze</h1>
         <button
             onClick={() => {
-                dispatch(fetchMazeMessage())
+                dispatch(fetchStartPageMessage())
             }}
             >
                 FETCH MESSAGE
         </button>
-        {maze.map((item) => (
+        {startPage.map((item) => (
             <p key={item.coordinates}>{item.description}</p>
         ))}
     </>
