@@ -52,7 +52,7 @@ export const game = createSlice({
 
 export const nextStep = (type, direction) => {
   return (dispatch, getState) => {
-    dispatch(game.actions.setLoading(true))
+    dispatch(ui.actions.setLoading(true))
     fetch(ACTION_URL, {
       method: 'POST',
       headers: {
@@ -65,11 +65,15 @@ export const nextStep = (type, direction) => {
       }),
     })
       .then(res => res.json())
-      .then(data => {
-        dispatch(game.actions.setCurrentPosition(data))
+      .then(json => {
+        dispatch(game.actions.setCurrentPosition(json))
         // dispatch(game.actions.setHistory(data))
       })
-      .finally(() => dispatch(game.actions.setLoading(false)))
+      .finally(() => dispatch(ui.actions.setLoading(false)))
   }
 }
+
+//export const restart = () => {
+//  return initialState
+//}
   

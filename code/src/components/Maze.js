@@ -23,8 +23,8 @@ export const Maze = () => {
     return (
         <section>
         <h1>{description}</h1>
-        <p>{coordinates}</p>
-        {actions.length === 0 && <h3>Yay! You made it out!</h3>}
+        <p>Your current position: {coordinates}</p>
+        {actions.length === 0 && <h3>Yay you made it out!</h3>}
         {actions.length > 0 && actions.map(item => <ActionCard key={item.direction} {...item} />)}
         </section>
     )

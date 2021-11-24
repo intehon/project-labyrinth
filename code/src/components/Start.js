@@ -22,10 +22,10 @@ export const Start = () => {
         <h1>Welcome to the maze!</h1>
         <form onSubmit={handleSubmit}>
         <label>
-          Add your username
+          Enter your name to get started
           <input type='text' required onChange={handleInputChange} />
         </label>
-        <button type='submit'>Lets go</button>
+        <button type='submit'>Enter the labyrinth</button>
       </form>
     </>
   )
