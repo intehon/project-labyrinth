@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { nextStep } from '../reducers/game'
+import {End } from './End'
 import styled from 'styled-components'
 
 const GameBoard = styled.section`
@@ -38,10 +39,14 @@ export const Maze = () => {
     return (
         <GameBoard>
             <Content>
-                <h1>{description}</h1>
-                <p>Your current position: {coordinates}</p>
-                {actions.length === 0 && <h3>Yay you made it out!</h3>}
-                {actions.length > 0 && actions.map(item => <ActionCard key={item.direction} {...item} />)}
+                {actions.length !== 0 && 
+                <div>
+                    <h1>Current description: {description}</h1>
+                    <p>Your current position: {coordinates}</p>
+                </div>
+                } 
+                {actions.length === 0 ? <End /> :
+                actions.length > 0 && actions.map(item => <ActionCard key={item.direction} {...item} />)}
             </Content>
         </GameBoard>
     )

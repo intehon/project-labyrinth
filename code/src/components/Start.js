@@ -25,7 +25,11 @@ export const Start = () => {
           Enter your name to get started
           <input type='text' required onChange={handleInputChange} />
         </label>
-        <Button variant="contained" type='submit'>Enter the labyrinth</Button>
+        <Button
+          variant="contained"
+          type='submit'>
+            Enter the labyrinth
+            </Button>
       </form>
     </>
   )
