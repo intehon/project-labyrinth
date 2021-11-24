@@ -1,10 +1,10 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 import { game } from '../reducers/game'
-import { startGame } from "../reducers/game.js"
+import { startGame } from "../reducers/game"
+import Button from '@mui/material/Button'
 
 export const Start = () => {
-  // const game = useSelector((store) => store.game.gameMessage)
   const dispatch = useDispatch()
 
   const handleInputChange = event => {
@@ -25,7 +25,7 @@ export const Start = () => {
           Enter your name to get started
           <input type='text' required onChange={handleInputChange} />
         </label>
-        <button type='submit'>Enter the labyrinth</button>
+        <Button variant="contained" type='submit'>Enter the labyrinth</Button>
       </form>
     </>
   )
