@@ -17,8 +17,8 @@ export const App = () => {
   return (
     <Provider store={store}>
       <main className="app">
-        <LoadingIndicator />
-        <StartPage />
+      <StartPage />
+      <LoadingIndicator />  
       </main>
     </Provider>
   )

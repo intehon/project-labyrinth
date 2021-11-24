@@ -1,6 +1,6 @@
 import React from "react"
 import Lottie from "react-lottie"
-import animationData from "../animations/loading-double"
+import animationData from "../animations/quest-crew"
 import { useSelector } from "react-redux"
 
 export const LoadingIndicator = () => {
