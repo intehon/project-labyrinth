@@ -3,19 +3,19 @@ import { ui } from "./ui"
 
 import { START_URL } from "../utils/urls"
 
-export const startPage = createSlice({
-    name: "startPage",
+export const game = createSlice({
+    name: "game",
     initialState: {
-      startPageMessage: []
+      gameMessage: []
     },
     reducers: {
-      setStartPageMessage: (state, action) => {
-        state.startPageMessage = [action.payload]
+      setGameMessage: (state, action) => {
+        state.gameMessage = [action.payload]
       }
     }
   })
   
-  export const fetchStartPageMessage = () => {
+  export const fetchGameMessage = () => {
 
     const options = {
         method: "POST",
@@ -32,7 +32,7 @@ export const startPage = createSlice({
         fetch(START_URL, options)
             .then((res) => res.json())
             .then((json) => {
-                dispatch(startPage.actions.setStartPageMessage(json))
+                dispatch(game.actions.setGameMessage(json))
                 dispatch(ui.actions.setLoading(false))
             })
     }

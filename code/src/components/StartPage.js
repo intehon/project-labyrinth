@@ -1,9 +1,9 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchStartPageMessage } from "../reducers/startPage"
+import { fetchGameMessage } from "../reducers/game.js"
 
 export const StartPage = () => {
-  const startPage = useSelector((store) => store.startPage.startPageMessage)
+  const game = useSelector((store) => store.game.gameMessage)
   const dispatch = useDispatch()
 
   return (
@@ -11,12 +11,12 @@ export const StartPage = () => {
         <h1>Welcome to the maze</h1>
         <button
             onClick={() => {
-                dispatch(fetchStartPageMessage())
+                dispatch(fetchGameMessage())
             }}
             >
                 FETCH MESSAGE
         </button>
-        {startPage.map((item) => (
+        {game.map((item) => (
             <p key={item.coordinates}>{item.description}</p>
         ))}
     </>

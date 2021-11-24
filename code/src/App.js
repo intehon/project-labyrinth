@@ -2,13 +2,13 @@ import React from 'react'
 import { Provider } from "react-redux"
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import { ui } from "./reducers/ui"
-import { startPage } from "./reducers/startPage"
+import { game } from "./reducers/game"
 import { LoadingIndicator } from "./components/LoadingIndicator"
 import { StartPage } from "./components/StartPage"
 
 const reducer = combineReducers({
   ui: ui.reducer,
-  startPage: startPage.reducer
+  game: game.reducer
 });
 
 const store = configureStore({ reducer })
