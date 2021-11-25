@@ -15,7 +15,7 @@ import img13 from '../images/img13.jpg'
 
 
 const GameBoard = styled.section`
- background-image: url(${(props) =>
+ background-image: url(${(props) => 
     props.coordinates === '0,0' ? img00
     : props.coordinates === '0,1' ? img01
     : props.coordinates === '0,2' ? img02
@@ -23,10 +23,11 @@ const GameBoard = styled.section`
     : props.coordinates === '1,0' ? img10
     : props.coordinates === '1,1' ? img11
     : props.coordinates === '1,2' ? img12
-    : img13
-  });
+    : img13});
   background-position: center;
   background-size: cover;
+  object-fit: cover;
+  object-position: center;
   background-repeat: no-repeat;
   height: 100vh;
 `
@@ -42,10 +43,10 @@ const Content = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  /* width: 100px; */
+  width: 100px;
   min-height: 300px;
   border: whitesmoke solid 4px;
   border-radius: 6px;
@@ -61,6 +62,7 @@ const Container = styled.div`
 const TextContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `
 
 export const Maze = () => {
@@ -73,7 +75,7 @@ export const Maze = () => {
     }
 
     const ActionCard = ({ description, type, direction }) => (
-        <div>
+        <TextContent> 
             <p>{description}</p>
             <Button 
               variant="contained"
@@ -81,7 +83,7 @@ export const Maze = () => {
               onClick={() => handleButtonClick(type, direction)}>
                 {type} {direction.toLowerCase()}
             </Button>
-        </div>
+        </TextContent>
     )
 
     return (
@@ -90,7 +92,7 @@ export const Maze = () => {
                 <Container>
                     {actions.length !== 0 && 
                     <TextContent>
-                        <h1>Current description: {description}</h1>
+                        <h1>{description}</h1>
                         <p>Your current position: {coordinates}</p>
                     </TextContent>
                     } 

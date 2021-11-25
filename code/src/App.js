@@ -9,6 +9,9 @@ import { Game } from "./components/Game"
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './utils/theme'
 
+import Sound from 'react-sound'
+import prelude from './sound/prelude.mp3'
+
 const reducer = combineReducers({
   ui: ui.reducer,
   game: game.reducer
@@ -20,6 +23,13 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
+        <Sound 
+        url={prelude}
+        playStatus={Sound.status.PLAYING}
+        playFromPosition={300}
+        autoLoad={true}
+        loop={true} 
+        />
         <Game />
       </Provider>
     </ThemeProvider>

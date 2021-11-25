@@ -5,10 +5,11 @@ import { startGame } from "../reducers/game"
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
 import maze from '../images/maze.jpg'
+// import beginning from '../images/beginning.jpg'
 import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
+// import TextField from '@mui/material/TextField'
 import Input from '@mui/material/Input';
-import { borderBottom } from "@mui/system"
+// import { borderBottom } from "@mui/system"
 
 const ariaLabel = { 'aria-label': 'description' };
 
@@ -32,10 +33,10 @@ display: flex;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  /* width: 100px; */
+  width: 100px;
   min-height: 300px;
   border: whitesmoke solid 4px;
   border-radius: 6px;
@@ -48,15 +49,15 @@ const Container = styled.div`
   }
 `
 
-const Form = styled.form`
-display: flex;
-flex-direction: column;
-`
-const Label = styled.label`
-display: flex;
-flex-direction: column;
-padding-bottom: 20px;
-`
+// const Form = styled.form`
+// display: flex;
+// flex-direction: column;
+// `
+// const Label = styled.label`
+// display: flex;
+// flex-direction: column;
+// padding-bottom: 20px;
+// `
 // const TextContent = styled.div`
 //   display: flex;
 //   flex-direction: column;
@@ -80,7 +81,8 @@ export const Start = () => {
       <GameBoard>
           <Content>
             <Container>
-              <h1>Welcome to the maze!</h1>
+              <h1>The Wheel of Time turns, and Ages come and pass, leaving memories that become legend.</h1><p> Legend fades to myth, and even myth is long forgotten when the Age that gave it birth comes again. In one Age, called the Third Age by some, an Age yet to come, an Age long past, a wind rose in the Mountains of Mist. The wind was not the beginning. There are neither beginnings nor endings to the turning of the Wheel of Time. But it was a beginning.</p>
+              <h1>This is the beginning of your journey.</h1>
                   <Box
                     component="form"
                     onSubmit={handleSubmit}
@@ -109,7 +111,7 @@ export const Start = () => {
                     </Button>
                   </Box>
                     
-          </Container>
+          </Container>  
         </Content>
       </GameBoard>
     </>
