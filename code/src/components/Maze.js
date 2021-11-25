@@ -1,12 +1,30 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { nextStep } from '../reducers/game'
-import {End } from './End'
+import { End } from './End'
 import styled from 'styled-components'
-import 0,1 from '../images/0,1.jpg'
+import Button from '@mui/material/Button'
+import img00 from '../images/img00.jpg'
+import img01 from '../images/img01.jpg'
+import img02 from '../images/img02.jpg'
+import img03 from '../images/img03.jpg'
+import img10 from '../images/img10.jpg'
+import img11 from '../images/img11.jpg'
+import img12 from '../images/img12.jpg'
+import img13 from '../images/img13.jpg'
+
 
 const GameBoard = styled.section`
-  background-image: url(img-${props.coordinates});
+ background-image: url(${(props) =>
+    props.coordinates === '0,0' ? img00
+    : props.coordinates === '0,1' ? img01
+    : props.coordinates === '0,2' ? img02
+    : props.coordinates === '0,3' ? img03
+    : props.coordinates === '1,0' ? img10
+    : props.coordinates === '1,1' ? img11
+    : props.coordinates === '1,2' ? img12
+    : img13
+  });
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,7 +51,6 @@ const Container = styled.div`
   border-radius: 6px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.6);
-  color: #f7f5e1;
 
   @media (min-width: 768px) {
     min-width: 600px;
@@ -58,14 +75,17 @@ export const Maze = () => {
     const ActionCard = ({ description, type, direction }) => (
         <div>
             <p>{description}</p>
-            <button onClick={() => handleButtonClick(type, direction)}>
+            <Button 
+              variant="contained"
+              color="secondary"
+              onClick={() => handleButtonClick(type, direction)}>
                 {type} {direction.toLowerCase()}
-            </button>
+            </Button>
         </div>
     )
 
     return (
-        <GameBoard>
+        <GameBoard coordinates={coordinates}>
             <Content>
                 <Container>
                     {actions.length !== 0 && 

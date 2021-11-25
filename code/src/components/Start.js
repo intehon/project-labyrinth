@@ -5,7 +5,12 @@ import { startGame } from "../reducers/game"
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
 import maze from '../images/maze.jpg'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Input from '@mui/material/Input';
+import { borderBottom } from "@mui/system"
 
+const ariaLabel = { 'aria-label': 'description' };
 
 
 const GameBoard = styled.section`
@@ -36,7 +41,6 @@ const Container = styled.div`
   border-radius: 6px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.6);
-  color: #f7f5e1;
 
   @media (min-width: 768px) {
     min-width: 600px;
@@ -53,10 +57,10 @@ display: flex;
 flex-direction: column;
 padding-bottom: 20px;
 `
-const TextContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`
+// const TextContent = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `
 
 export const Start = () => {
   const dispatch = useDispatch()
@@ -77,19 +81,34 @@ export const Start = () => {
           <Content>
             <Container>
               <h1>Welcome to the maze!</h1>
-                <TextContent>
-                  <Form onSubmit={handleSubmit}>
-                    <Label>
-                      <p>Enter your name to get started</p>
-                      <input type='text' required onChange={handleInputChange} />
-                    </Label>
+                  <Box
+                    component="form"
+                    onSubmit={handleSubmit}
+                    sx={{
+                      '& > :not(style)': { 
+                        color: 'info.light', 
+                        m: 1, 
+                        width: '25ch' 
+                      },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <Input
+                      placeholder="Enter your name to get started"
+                      inputProps={ariaLabel}
+                      onChange={handleInputChange}
+                      color="info"
+                    />
                     <Button
                       variant="contained"
-                      type='submit'>
-                        Enter the labyrinth
+                      color="info"
+                      type='submit'
+                    >
+                      Enter the maze
                     </Button>
-                </Form>
-            </TextContent>
+                  </Box>
+                    
           </Container>
         </Content>
       </GameBoard>

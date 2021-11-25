@@ -11,9 +11,9 @@ export const End = () => {
 
     return (
         <section>
-        <h1>{description}</h1>
-        <p>Your current position: {coordinates}</p>
-        {<h3>Yay! You made it out!</h3>}
+        {/* <h1>{description}</h1>
+        <p>Your current position: {coordinates}</p> */}
+        <h3>Yay! You made it out!</h3>
         </section>
     )
 }
