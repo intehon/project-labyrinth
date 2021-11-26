@@ -2,7 +2,10 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { nextStep } from '../reducers/game'
 import { End } from './End'
-import styled from 'styled-components'
+
+// Styling
+import { GameBoard, Container, ContentWrapper } from '../styling/GlobalStyling';
+import styled from 'styled-components/macro'
 import Button from '@mui/material/Button'
 import img00 from '../images/img00.jpg'
 import img01 from '../images/img01.jpg'
@@ -12,46 +15,18 @@ import img10 from '../images/img10.jpg'
 import img11 from '../images/img11.jpg'
 import img13 from '../images/img13.jpg'
 
-const GameBoard = styled.section`
-  background-position: center;
-  background-size: cover;
-  object-fit: cover;
-  object-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100px;
-  min-height: 300px;
-  border: whitesmoke solid 4px;
-  border-radius: 6px;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-
-  @media (min-width: 768px) {
-    min-width: 600px;
-    padding: 30px;
-  }
-`
-
 const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-bottom: 20px;
+
+  @media (min-width: 992px) {
+    padding-bottom: 40px;
+    justify-content: center;
+  }
+`
+
+const ButtonContainer = styled.div`
 `
 
 export const Maze = () => {
@@ -96,12 +71,14 @@ export const Maze = () => {
     const ActionCard = ({ description, type, direction }) => (
         <TextContent> 
             <p>{description}</p>
-            <Button 
-              variant="contained"
-              color="secondary"
-              onClick={() => handleButtonClick(type, direction)}>
-                {type} {direction.toLowerCase()}
-            </Button>
+            <ButtonContainer>
+              <Button 
+                variant="contained"
+                color="secondary"
+                onClick={() => handleButtonClick(type, direction)}>
+                  {type} {direction.toLowerCase()}
+              </Button>
+            </ButtonContainer>
         </TextContent>
     )
 
@@ -109,18 +86,18 @@ export const Maze = () => {
         <GameBoard coordinates={coordinates}
         style={{ backgroundImage: `url(${backgroundImage()})` }}
         >
-            <Content>
-                <Container>
+            <Container>
+                <ContentWrapper>
                     {actions.length !== 0 && 
-                    <TextContent>
-                        <h1>{description}</h1>
-                        <p>Your current position: {coordinates}</p>
-                    </TextContent>
+                    <>
+                      <h1>{description}</h1>
+                      <p>Your current position: {coordinates}</p>
+                    </>
                     } 
                     {actions.length === 0 ? <End /> :
                     actions.length > 0 && actions.map(item => <ActionCard key={item.direction} {...item} />)}
-                </Container>
-            </Content>
+                </ContentWrapper>
+            </Container>
         </GameBoard>
     )
 }

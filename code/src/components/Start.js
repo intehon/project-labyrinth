@@ -1,18 +1,18 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { game } from '../reducers/game'
 import { startGame } from "../reducers/game"
+
+// Styling
+import { Container, ContentWrapper } from '../styling/GlobalStyling'
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
 import maze from '../images/maze.jpg'
-// import beginning from '../images/beginning.jpg'
 import Box from '@mui/material/Box'
-// import TextField from '@mui/material/TextField'
-import Input from '@mui/material/Input';
-// import { borderBottom } from "@mui/system"
+import Input from '@mui/material/Input'
 
-const ariaLabel = { 'aria-label': 'description' };
 
+const ariaLabel = { 'aria-label': 'description' }
 
 const GameBoard = styled.section`
   background-image: url(${(maze)});
@@ -20,50 +20,16 @@ const GameBoard = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-`
-
-const Content = styled.div`
-display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`
-
-const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100px;
-  min-height: 300px;
-  border: whitesmoke solid 4px;
-  border-radius: 6px;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
 
   @media (min-width: 768px) {
-    min-width: 600px;
-    padding: 30px;
+    justify-content: center;
   }
 `
 
-// const Form = styled.form`
-// display: flex;
-// flex-direction: column;
-// `
-// const Label = styled.label`
-// display: flex;
-// flex-direction: column;
-// padding-bottom: 20px;
-// `
-// const TextContent = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `
-
 export const Start = () => {
+  const { username } = useSelector(store => store.game)
   const dispatch = useDispatch()
 
   const handleInputChange = event => {
@@ -79,8 +45,8 @@ export const Start = () => {
   return (
     <>
       <GameBoard>
-          <Content>
-            <Container>
+          <Container>
+            <ContentWrapper>
               <h1>The Wheel of Time turns, and Ages come and pass, leaving memories that become legend.</h1><p> Legend fades to myth, and even myth is long forgotten when the Age that gave it birth comes again. In one Age, called the Third Age by some, an Age yet to come, an Age long past, a wind rose in the Mountains of Mist. The wind was not the beginning. There are neither beginnings nor endings to the turning of the Wheel of Time. But it was a beginning.</p>
               <h1>This is the beginning of your journey.</h1>
                   <Box
@@ -88,7 +54,7 @@ export const Start = () => {
                     onSubmit={handleSubmit}
                     sx={{
                       '& > :not(style)': { 
-                        color: 'info.light', 
+                        color: 'primary.light', 
                         m: 1, 
                         width: '25ch' 
                       },
@@ -100,19 +66,20 @@ export const Start = () => {
                       placeholder="Enter your name to get started"
                       inputProps={ariaLabel}
                       onChange={handleInputChange}
-                      color="info"
+                      color="primary"
+                      value={username}
                     />
                     <Button
                       variant="contained"
-                      color="info"
+                      disabled={!username}
+                      color="primary"
                       type='submit'
                     >
                       Enter the maze
                     </Button>
                   </Box>
-                    
-          </Container>  
-        </Content>
+          </ContentWrapper>  
+        </Container>
       </GameBoard>
     </>
   )
