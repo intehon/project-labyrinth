@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { game } from '../reducers/game'
+import Button from '@mui/material/Button'
 
 export const End = () => {
     const { description, coordinates, actions } = useSelector(store => store.game.currentPosition)
@@ -10,9 +11,16 @@ export const End = () => {
         <section>
             <h1>{description}</h1>
             <p>Your current position: {coordinates}</p>
-            <button onClick={() => dispatch(game.actions.setNewGame())}>
+            <Button 
+              variant="contained"
+              color="secondary"
+              onClick={() => dispatch(game.actions.setNewGame())}>
                 Restart game
-            </button>
+            </Button>
+            {/* <button onClick={() => dispatch(game.actions.setNewGame())}>
+                 Restart game
+            </button> */}
         </section>
     )
 }
+
