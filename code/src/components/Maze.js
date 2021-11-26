@@ -75,6 +75,7 @@ export const Maze = () => {
               <Button 
                 variant="contained"
                 color="secondary"
+                style={{ fontFamily: 'MedievalSharp', letterSpacing: '2px', marginTop: '10px' }}
                 onClick={() => handleButtonClick(type, direction)}>
                   {type} {direction.toLowerCase()}
               </Button>

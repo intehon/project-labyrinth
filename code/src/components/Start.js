@@ -56,7 +56,7 @@ export const Start = () => {
                       '& > :not(style)': { 
                         color: 'primary.light', 
                         m: 1, 
-                        width: '25ch' 
+                        width: '25ch', 
                       },
                     }}
                     noValidate
@@ -67,6 +67,7 @@ export const Start = () => {
                       inputProps={ariaLabel}
                       onChange={handleInputChange}
                       color="primary"
+                      style={{ fontFamily: 'MedievalSharp', letterSpacing: '1.2px' }}
                       value={username}
                     />
                     <Button
@@ -74,6 +75,7 @@ export const Start = () => {
                       disabled={!username}
                       color="primary"
                       type='submit'
+                      style={{ fontFamily: 'MedievalSharp', letterSpacing: '2px' }}
                     >
                       Enter the maze
                     </Button>
