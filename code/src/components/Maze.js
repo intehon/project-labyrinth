@@ -22,7 +22,7 @@ const TextContent = styled.div`
   padding-bottom: 20px;
 
   @media (min-width: 992px) {
-    padding-bottom: 40px;
+    padding: 0 100px;
     justify-content: center;
   }
 `

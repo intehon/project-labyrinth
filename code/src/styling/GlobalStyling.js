@@ -19,6 +19,10 @@ export const Container = styled.div`
     text-align: center;
     margin-top: 30px;
     margin-bottom: 15px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 30px;
+    }
 `
 
 export const ContentWrapper = styled.div`
@@ -31,6 +35,7 @@ export const ContentWrapper = styled.div`
 
     @media (min-width: 768px) {
         min-width: 600px;
+        padding: 15px 50px 50px 50px;
     }
 
     @media (min-width: 992px) {
