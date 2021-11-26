@@ -10,20 +10,9 @@ import img02 from '../images/img02.jpg'
 import img03 from '../images/img03.jpg'
 import img10 from '../images/img10.jpg'
 import img11 from '../images/img11.jpg'
-import img12 from '../images/img12.jpg'
 import img13 from '../images/img13.jpg'
 
-
 const GameBoard = styled.section`
-  background-image: url(${(props) => 
-    props.coordinates === '0,0' ? img00
-    : props.coordinates === '0,1' ? img01
-    : props.coordinates === '0,2' ? img02
-    : props.coordinates === '0,3' ? img03
-    : props.coordinates === '1,0' ? img10
-    : props.coordinates === '1,1' ? img11
-    : props.coordinates === '1,2' ? img12
-    : img13});
   background-position: center;
   background-size: cover;
   object-fit: cover;
@@ -69,6 +58,36 @@ export const Maze = () => {
     const { description, coordinates, actions } = useSelector(store => store.game.currentPosition)
     const dispatch = useDispatch()
 
+    const backgroundImage = () => {
+      let bg = '';
+      switch (coordinates) {
+          case '0,0':
+              bg = img00;
+              break;
+          case '1,0':
+              bg = img10;
+              break;
+          case '1,1':
+              bg = img11;
+              break;
+          case '0,1':
+              bg = img01;
+              break;
+          case '0,2':
+              bg = img02;
+              break;
+          case '0,3':
+              bg = img03;
+              break;
+          case '1,3':
+              bg = img13;
+              break;
+          default:
+              return img13;
+      }
+      return bg;
+  };
+
     const handleButtonClick = (type, direction) => {
         // call the api, pass along type and direction to use as part of the body
         dispatch(nextStep(type, direction))
@@ -87,7 +106,9 @@ export const Maze = () => {
     )
 
     return (
-        <GameBoard coordinates={coordinates}>
+        <GameBoard coordinates={coordinates}
+        style={{ backgroundImage: `url(${backgroundImage()})` }}
+        >
             <Content>
                 <Container>
                     {actions.length !== 0 && 
