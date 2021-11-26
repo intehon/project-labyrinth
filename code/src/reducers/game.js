@@ -4,8 +4,8 @@ import { ui } from "./ui"
 import { START_URL, ACTION_URL } from "../utils/urls"
 
 const initialState = {
-  username: null,
-  currentPosition: null,
+  username: '',
+  currentStep: {},
   // history: [], this can be used to implement a go back functionality
   loading: false,
 }
