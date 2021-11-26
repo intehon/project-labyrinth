@@ -14,13 +14,10 @@ export const End = () => {
             <Button 
               variant="contained"
               color="secondary"
-              style={{ fontFamily: 'MedievalSharp', letterSpacing: '2px' }}
+              style={{ fontFamily: 'MedievalSharp', letterSpacing: '2px', marginTop: '10px' }}
               onClick={() => dispatch(game.actions.setNewGame())}>
                 Restart game
             </Button>
-            {/* <button onClick={() => dispatch(game.actions.setNewGame())}>
-                 Restart game
-            </button> */}
         </section>
     )
 }

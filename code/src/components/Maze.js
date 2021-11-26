@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { nextStep } from '../reducers/game'
 import { End } from './End'
+import { LoadingIndicator } from './LoadingIndicator'
 
 // Styling
 import { GameBoard, Container, ContentWrapper } from '../styling/GlobalStyling';
@@ -26,12 +27,14 @@ const TextContent = styled.div`
   }
 `
 
+// container to make ui button fit to the text
 const ButtonContainer = styled.div`
 `
 
 export const Maze = () => {
     const { description, coordinates, actions } = useSelector(store => store.game.currentPosition)
     const dispatch = useDispatch()
+    const loading = useSelector(store => store.ui.loading)
 
     const backgroundImage = () => {
       let bg = '';
@@ -84,10 +87,12 @@ export const Maze = () => {
     )
 
     return (
-        <GameBoard coordinates={coordinates}
+      <GameBoard coordinates={coordinates}
         style={{ backgroundImage: `url(${backgroundImage()})` }}
         >
-            <Container>
+          <Container>
+            {loading && <LoadingIndicator />}
+              {!loading && (
                 <ContentWrapper>
                     {actions.length !== 0 && 
                     <>
@@ -98,6 +103,7 @@ export const Maze = () => {
                     {actions.length === 0 ? <End /> :
                     actions.length > 0 && actions.map(item => <ActionCard key={item.direction} {...item} />)}
                 </ContentWrapper>
+              )}
             </Container>
         </GameBoard>
     )
