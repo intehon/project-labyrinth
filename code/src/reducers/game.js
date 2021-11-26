@@ -3,14 +3,16 @@ import { ui } from "./ui"
 
 import { START_URL, ACTION_URL } from "../utils/urls"
 
+const initialState = {
+  username: null,
+  currentPosition: null,
+  // history: [], this can be used to implement a go back functionality
+  loading: false,
+}
+
 export const game = createSlice({
     name: "game",
-    initialState: {
-      username: null,
-      currentPosition: null,
-      // history: [], this can be used to implement a go back functionality
-      loading: false,
-    },
+    initialState,
     reducers: {
       setUsername: (store, action) => {
         store.username = action.payload
@@ -27,6 +29,9 @@ export const game = createSlice({
       // },
       setLoading: (store, action) => {
         store.loading = action.payload
+      },
+      setNewGame: () => {
+        return initialState
       },
     },
   })
