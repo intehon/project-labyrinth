@@ -4,7 +4,7 @@ import { game } from '../reducers/game'
 import Button from '@mui/material/Button'
 
 export const End = () => {
-    const { description, coordinates, actions } = useSelector(store => store.game.currentPosition)
+    const { description, coordinates } = useSelector(store => store.game.currentPosition)
     const dispatch = useDispatch()
 
     return (

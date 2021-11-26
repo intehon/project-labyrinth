@@ -13,37 +13,17 @@ import img11 from '../images/img11.jpg'
 import img12 from '../images/img12.jpg'
 import img13 from '../images/img13.jpg'
 
-let backgroundImage = (coordinates) => {
-  switch (coordinates) {
-    case '0,0':
-    return img00;
-    break;
-    case '0,1':
-    return img01;
-    break;
-    case '0,2':
-    return img02;
-    break;
-    case '0,3':
-    return img03;
-    break;
-    case '1,0':
-    return img10;
-    break;
-    case '1,1':
-    return img11;
-    break;
-    case '1,2':
-    return img12;
-    break;
-    default:
-    return img13;
-  }}
-  
-
 
 const GameBoard = styled.section`
- background-image: url(${backgroundImage});
+  background-image: url(${(props) => 
+    props.coordinates === '0,0' ? img00
+    : props.coordinates === '0,1' ? img01
+    : props.coordinates === '0,2' ? img02
+    : props.coordinates === '0,3' ? img03
+    : props.coordinates === '1,0' ? img10
+    : props.coordinates === '1,1' ? img11
+    : props.coordinates === '1,2' ? img12
+    : img13});
   background-position: center;
   background-size: cover;
   object-fit: cover;
